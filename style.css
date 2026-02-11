@@ -128,7 +128,8 @@ button:active {
         left: 1vw;
     }
     .right{
-        right: 1vw;
+        width: 24vw;
+        max-width: 120px;
     }
     .valentine-box {
         margin-top: 30px;
