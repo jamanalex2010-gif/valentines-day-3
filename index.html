@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>valentines day</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+    <header>
+        <h1><strong>the 14th of February</strong></h1>
+    </header>
+    <img src="piddy.png.png" class="side-img left">
+    <img src="epstein.png.png" class="side-img right">
+    <div class="valentine-box">
+        Will you be my valentine?:33
+    </div>
+    
+    <div class="btns">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+    
+    <p id="message"></p>
+    
+    
+    
+    <script>
+        let yesBtn = document.getElementById("yes");
+        let noBtn = document.getElementById("no");
+        let message = document.getElementById("message");
+
+        let hoverCount = 0;
+
+        function moveNoButton() {
+            let container = document.querySelector('.btns');
+            let containerRect = container.getBoundingClientRect();
+            
+            let btnWidth = noBtn.offsetWidth;
+            let btnHeight = noBtn.offsetHeight;
+            
+            let maxX = containerRect.width - btnWidth - 10;
+            let maxY = containerRect.height - btnHeight - 10;
+            
+            let x = Math.random() * maxX;
+            let y = Math.random() * maxY;
+            
+            if (x < 10) x = 10;
+            if (y < 10) y = 10;
+            
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+            
+            hoverCount++;
+            
+            // Постепенное увеличение "Yes"
+            if (hoverCount <= 3) {
+                yesBtn.style.transform = "scale(1.5)";
+                yesBtn.style.fontSize = "22px";
+            } else if (hoverCount <= 6) {
+                yesBtn.style.transform = "scale(2)";
+                yesBtn.style.fontSize = "30px";
+            } else if (hoverCount <= 10) {
+                yesBtn.style.transform = "scale(2.5)";
+                yesBtn.style.fontSize = "40px";
+            } else {
+                yesBtn.style.position = "fixed";
+                yesBtn.style.top = "50%";
+                yesBtn.style.left = "50%";
+                yesBtn.style.transform = "translate(-50%, -50%) scale(3)";
+                yesBtn.style.fontSize = "50px";
+                yesBtn.style.zIndex = "9999";
+                noBtn.style.display = "none";
+            }
+        }
+
+        // Для КОМПЬЮТЕРА - событие mouseover
+        noBtn.addEventListener("mouseover", moveNoButton);
+
+        // Для МОБИЛЬНЫХ УСТРОЙСТВ - событие touchstart (касание)
+        noBtn.addEventListener("touchstart", function(e) {
+            e.preventDefault();
+            moveNoButton();
+        });
+
+        // Клик на "Yes"
+        yesBtn.addEventListener("click", function () {
+            message.innerHTML = "YAAAY 😍💘 I knew it!!!";
+            message.style.display = "block";
+            
+            yesBtn.style.position = "fixed";
+            yesBtn.style.top = "0";
+            yesBtn.style.left = "0";
+            yesBtn.style.width = "100%";
+            yesBtn.style.height = "100%";
+            yesBtn.style.fontSize = "clamp(40px, 10vw, 80px)";
+            yesBtn.style.borderRadius = "0";
+            yesBtn.style.transform = "scale(1)";
+            yesBtn.style.zIndex = "9998";
+            yesBtn.innerHTML = "YES! 💝";
+            
+            message.style.position = "fixed";
+            message.style.top = "20%";
+            message.style.left = "50%";
+            message.style.transform = "translateX(-50%)";
+            message.style.zIndex = "9999";
+            message.style.fontSize = "clamp(30px, 8vw, 50px)";
+            message.style.textShadow = "2px 2px 10px rgba(0,0,0,0.5)";
+            
+            noBtn.style.display = "none";
+            
+            // Создаём сердечки
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createHeart();
+                }, i * 100);
+            }
+        });
+
+        // Функция создания сердечек
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.innerHTML = "💖";
+            heart.style.position = "fixed";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+            heart.style.fontSize = Math.random() * 30 + 20 + "px";
+            heart.style.pointerEvents = "none";
+            heart.style.zIndex = "10000";
+            heart.style.opacity = "0";
+            heart.style.transition = "all 2s ease-out";
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.style.opacity = "1";
+                heart.style.transform = `translateY(-150px) rotate(${Math.random() * 720}deg) scale(1.5)`;
+            }, 10);
+            
+            setTimeout(() => {
+                heart.style.opacity = "0";
+                setTimeout(() => heart.remove(), 500);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
