@@ -14,20 +14,20 @@ h1 {
     position: absolute;
     top:50%;
     transform: translateY(-50%);
-    width:15vw;
+    width:14vw;
     max-width: 180px;
-    min-width:80px ;
+    min-width:70px ;
 }
 .left{
-    left:3vw;
+    left:1vw;
     width: 18vw;
-    max-width: 120px;
+    max-width: 220px;
     min-width: 90px;
 }
 .right{
     right: 1vw;
     width: 18vw;
-    max-width: 220px;
+    max-width: 400px;
     min-width: 90x;
 }
 body {
@@ -120,6 +120,16 @@ button:active {
         margin-top: 10px;
     }
     
+    .side-img{
+        width: 18vw;
+        max-width: 90px;
+    }
+    .left{
+        left: 1vw;
+    }
+    .right{
+        right: 1vw;
+    }
     .valentine-box {
         margin-top: 30px;
         font-size: 20px;
